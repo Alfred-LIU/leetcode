@@ -1,5 +1,6 @@
 package array
 
+//1424. Diagonal Traverse II: Given a 2D integer array nums, return all elements of nums in diagonal order as shown in the below images.
 func findDiagonalOrder(nums [][]int) []int {
 	arr := [][]int{}
 	res := []int{}
