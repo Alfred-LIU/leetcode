@@ -22,7 +22,7 @@ func orangesRotting(grid [][]int) int {
 
 	move := 0
 	target := 0
-	pos := [][]int{}
+	var pos [][]int
 	for i := 0; i < len(grid); i++ {
 		for j := 0; j < len(grid[0]); j++ {
 			if grid[i][j] == 2 {
@@ -42,7 +42,7 @@ func orangesRotting(grid [][]int) int {
 		if target == 0 {
 			return move
 		}
-		newPos := [][]int{}
+		var newPos [][]int
 
 		for _, v := range pos {
 			for _, d := range dir {
