@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 var (
 	m = map[int]int{
@@ -14,8 +17,14 @@ var (
 func main() {
 	fmt.Println("Hello, playground")
 
-	var j int
 	i := 27
-	fmt.Println(i, j)
-	fmt.Printf("%v, %T", m, m)
+	fmt.Printf("%v, %T\n", m, m)
+
+	//convert
+	j := float32(i)
+	fmt.Printf("%v, %T\n", j, j)
+
+	s := strconv.Itoa(i)
+	fmt.Printf("%v, %T\n", s, s)
+
 }
