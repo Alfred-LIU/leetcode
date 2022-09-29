@@ -27,4 +27,7 @@ func main() {
 	s := strconv.Itoa(i)
 	fmt.Printf("%v, %T\n", s, s)
 
+	var n bool = true
+	fmt.Printf("%v, %T\n", n, n)
+
 }
