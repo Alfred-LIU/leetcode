@@ -30,4 +30,16 @@ func main() {
 	var n bool = true
 	fmt.Printf("%v, %T\n", n, n)
 
+	var x uint16 = 42
+	x = x << 3
+	fmt.Printf("%v, %T\n", x, x)
+
+	var s1 = "this is a string"
+	b := []byte(s)
+	fmt.Printf("%v, %T\n", s1[2], s1[2])
+	fmt.Printf("%v, %T\n", b, b)
+
+	var r rune = 'a'
+	fmt.Printf("%v, %T\n", r, r)
+
 }
