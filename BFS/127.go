@@ -62,29 +62,3 @@ func buildMap(allwords []string, wordList []string) map[string]map[string]bool {
 	}
 	return res
 }
-
-func allAjacents(word string, wordList []string) map[string]bool {
-	res := make(map[string]bool, 0)
-	for _, w := range wordList {
-		if isAdjacent(word, w) {
-			res[w] = true
-		}
-	}
-
-	return res
-}
-
-func isAdjacent(w1, w2 string) bool {
-	if len(w1) != len(w2) {
-		return false
-	}
-
-	count := 0
-	for i := 0; i < len(w1); i++ {
-		if w1[i] != w2[i] {
-			count++
-		}
-	}
-
-	return count == 1
-}
