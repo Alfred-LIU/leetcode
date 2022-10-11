@@ -4,7 +4,7 @@ func minWindow(s string, t string) string {
 	count := 0
 	m := make(map[byte]int, 0)
 
-	for i := range t {
+	for i, _ := range t {
 		m[t[i]]++
 		count++
 	}
