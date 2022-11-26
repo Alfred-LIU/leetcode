@@ -32,31 +32,31 @@ type element struct {
 
 type MaxHeap []*element
 
-//Len -
+// Len -
 func (h MaxHeap) Len() int { return len(h) }
 
-//Less -
+// Less -
 func (h MaxHeap) Less(i, j int) bool {
 	return h[i].value > h[j].value || h[i].value == h[j].value && h[i].stackIndex > h[j].stackIndex
 }
 
-//Swap -
+// Swap -
 func (h MaxHeap) Swap(i, j int) {
 	h[i], h[j] = h[j], h[i]
 	h[i].heapIndex = i
 	h[j].heapIndex = j
 }
 
-//Push -
-func (h *MaxHeap) Push(x interface{}) {
+// Push -
+func (h *MaxHeap) Push(x any) {
 	l := len(*h)
 	item := x.(*element)
 	item.heapIndex = l
 	*h = append(*h, item)
 }
 
-//Pop -
-func (h *MaxHeap) Pop() interface{} {
+// Pop -
+func (h *MaxHeap) Pop() any {
 	old := *h
 	l := len(old)
 	popItem := old[l-1]
@@ -66,14 +66,14 @@ func (h *MaxHeap) Pop() interface{} {
 	return popItem
 }
 
-//Stack
+// Stack
 type stack struct {
 	data []*element
 	idx  int
 	cap  int
 }
 
-//newStack -
+// newStack -
 func newStack(cap int) *stack {
 	return &stack{
 		data: make([]*element, cap),
@@ -82,7 +82,7 @@ func newStack(cap int) *stack {
 	}
 }
 
-//push -
+// push -
 func (s *stack) push(e *element) {
 	if s.idx == s.cap {
 		s.grow()
@@ -93,7 +93,7 @@ func (s *stack) push(e *element) {
 	s.idx++
 }
 
-//pop -
+// pop -
 func (s *stack) pop() *element {
 	s.idx--
 	v := s.data[s.idx]
@@ -101,12 +101,12 @@ func (s *stack) pop() *element {
 	return v
 }
 
-//peek
+// peek
 func (s *stack) peek() *element {
 	return s.data[s.idx-1]
 }
 
-//markDie
+// markDie
 func (s *stack) markDie(idx int) {
 	if idx >= s.cap {
 		return
@@ -114,7 +114,7 @@ func (s *stack) markDie(idx int) {
 	s.data[idx].isDie = true
 }
 
-//grow -
+// grow -
 func (s *stack) grow() {
 	newData := make([]*element, s.cap*2)
 	copy(newData, s.data)
@@ -122,7 +122,7 @@ func (s *stack) grow() {
 	s.cap = s.cap * 2
 }
 
-//start
+// start
 type MaxStack struct {
 	stack *stack
 	max   MaxHeap

@@ -15,7 +15,7 @@ type AutocompleteSystem struct {
 	CurrWord string
 }
 
-func Constructor(sentences []string, times []int) AutocompleteSystem {
+func Constructor1(sentences []string, times []int) AutocompleteSystem {
 	acs := AutocompleteSystem{
 		Root: &Node{},
 	}
