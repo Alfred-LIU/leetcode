@@ -7,7 +7,7 @@ Return the minimum number of steps to walk from the upper left corner (0, 0) to 
 */
 
 // define moves in grid
-var moves = [][]int{
+/*var moves = [][]int{
 	{1, 0},
 	{0, 1},
 	{0, -1},
@@ -57,5 +57,62 @@ func shortestPath(grid [][]int, k int) int {
 		stack = stack[size:]
 		level++
 	}
+	return -1
+}*/
+
+var move = [][]int{
+	{1, 0},
+	{-1, 0},
+	{0, 1},
+	{0, -1},
+}
+
+func shortestPath(grid [][]int, k int) int {
+	visited := make([][]int, len(grid))
+	for i := range visited {
+		visited[i] = make([]int, len(grid[i]))
+		for j := range visited[i] {
+			visited[i][j] = -1
+		}
+	}
+
+	visited[0][0] = k
+	stack := make([][]int, 0)
+	stack = append(stack, []int{0, 0, k})
+	level := 0
+	for len(stack) != 0 {
+		size := len(stack)
+		for _, current := range stack {
+			if current[0] == len(grid)-1 && current[1] == len(grid[0])-1 {
+				return level
+			}
+
+			for _, v := range move {
+				nextX := current[0] + v[0]
+				nextY := current[1] + v[1]
+
+				if nextX < 0 || nextX >= len(grid) || nextY < 0 || nextY >= len(grid[0]) {
+					continue
+				}
+
+				currentK := current[2]
+				if grid[nextX][nextY] == 1 {
+					currentK--
+				}
+
+				if currentK < 0 {
+					continue
+				}
+
+				if visited[nextX][nextY] == -1 || (visited[nextX][nextY] != -1 && visited[nextX][nextY] < currentK) {
+					stack = append(stack, []int{nextX, nextY, currentK})
+					visited[nextX][nextY] = currentK
+				}
+			}
+		}
+		stack = stack[size:]
+		level++
+	}
+
 	return -1
 }
