@@ -1,4 +1,4 @@
-package topological
+package topologySort
 
 /*
 There is a new alien language that uses the English alphabet. However, the order among the letters is unknown to you.
