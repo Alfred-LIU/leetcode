@@ -15,12 +15,7 @@ func alienOrder(words []string) string {
 	var adjList = make(map[byte][]byte, 0)
 	var inDegree = make(map[byte]int, 0)
 
-	for i := range words[0] {
-		adjList[words[0][i]] = make([]byte, 0)
-		inDegree[words[0][i]] = 0
-	}
-
-	for i := 1; i < len(words); i++ {
+	for i := 0; i < len(words); i++ {
 		wrd := words[i]
 		for j := range wrd {
 			if _, ok := adjList[wrd[j]]; !ok {
